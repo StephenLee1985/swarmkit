@@ -127,7 +127,7 @@ var (
 			if err != nil {
 				return err
 			}
-			spec.DefaultLogDriver = driver
+			spec.Orchestration.DefaultLogDriver = driver
 
 			r, err := c.UpdateCluster(common.Context(cmd), &api.UpdateClusterRequest{
 				ClusterID:      cluster.ID,

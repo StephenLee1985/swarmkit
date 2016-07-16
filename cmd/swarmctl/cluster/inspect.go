@@ -56,18 +56,18 @@ func printClusterSummary(cluster *api.Cluster) {
 		}
 	}
 
-	if cluster.Spec.DefaultLogDriver != nil {
-		fmt.Fprintf(w, "DefaultLogDriver\t: %s\n", cluster.Spec.DefaultLogDriver.Name)
+	if cluster.Spec.Orchestration.DefaultLogDriver != nil {
+		fmt.Fprintf(w, "DefaultLogDriver\t: %s\n", cluster.Spec.Orchestration.DefaultLogDriver.Name)
 		var keys []string
 
-		if len(cluster.Spec.DefaultLogDriver.Options) != 0 {
-			for k := range cluster.Spec.DefaultLogDriver.Options {
+		if len(cluster.Spec.Orchestration.DefaultLogDriver.Options) != 0 {
+			for k := range cluster.Spec.Orchestration.DefaultLogDriver.Options {
 				keys = append(keys, k)
 			}
 			sort.Strings(keys)
 
 			for _, k := range keys {
-				v := cluster.Spec.DefaultLogDriver.Options[k]
+				v := cluster.Spec.Orchestration.DefaultLogDriver.Options[k]
 				if v != "" {
 					fmt.Fprintf(w, "  %s\t: %s\n", k, v)
 				} else {
